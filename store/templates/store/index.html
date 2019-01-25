@@ -1,0 +1,450 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="nav-pos">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="col-3">
+        <a class="navbar-brand brand-font" href="#">The Embedded Store</a>
+      </div>
+      {% if user.is_authenticated %}
+        <div class="cart-btn-top">
+          <div class="btn-group">
+              <button type="button" class="btn btn-primary">
+                <i class="fas fa-shopping-cart"></i>
+                Cart <span class="badge badge-warning">{{ cart_count }}</span>
+                <span class="sr-only">your cart items!!</span>
+              </button>
+          </div>
+        </div>
+      {% endif %}
+      <div class="col-sm-12 col-lg-7">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2 col-sm-9 col-md-10 col-lg-9 col-xl-10" type="search" placeholder="What are you looking for?" aria-label="Search">
+          <button class="btn btn-outline-light sm-width-100 my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+      {% if user.is_authenticated %}
+        <div class="cart-btn-bottom">
+          <div class="btn-group col-lg-3">
+            <button type="button" class="btn btn-primary">
+              <i class="fas fa-shopping-cart"></i>
+              Cart <span class="badge badge-warning">{{ cart_count }}</span>
+              <span class="sr-only">your cart items!!</span>
+            </button>
+          </div>
+        </div>
+      {% endif %}
+    </nav>
+  </div>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      {% if user.is_authenticated %}
+      <div class="btn-group">
+        <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          @{{ user.username }}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'my-account' %}">My Account</a>
+          <a class="dropdown-item" href="{% url 'my-cart' %}">My Cart</a>
+          <a class="dropdown-item" href="#">My Orders</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+        </div>
+        </div>
+      {% else %}
+        <div class="dropdown">
+          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Login/ Signup
+          </button>
+          <div class="dropdown-menu login-menu">
+            <form class="px-4 py-3" method="POST">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                <label class="form-check-label" for="dropdownCheck">
+                  Remember Me
+                </label>
+              </div>
+              <div class="padding-top-5"><button type="submit" class="btn btn-primary">Login</button></div>
+              <div class="form-group">
+                <div class="padding-top-5"><span>Forgot password? <a href="{% url 'password-reset' %}">Click Here</a></span></div>
+                <div class="dropdown-divider"></div>
+                <div class="padding-top-5"><span>New Customer? <a href="{% url 'signup' %}" class="btn btn-primary signup-btn">Sign Up</a> Now!!</span></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Microcontrollers
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Arduino Nano</a>
+              <a class="dropdown-item" href="#">Arduino UNO R3</a>
+              <a class="dropdown-item" href="#">Arduino Mega</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item font-color-blue" href="#">View More...</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sensors
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Accelerometer Sensors</a>
+              <a class="dropdown-item" href="#">Gyroscope Sensors</a>
+              <a class="dropdown-item" href="#">IR Sensors</a>
+              <a class="dropdown-item" href="#">Temperature Sensors</a>
+              <a class="dropdown-item" href="#">Ultrasonic Sensors</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item font-color-blue" href="#">View More...</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Actuators
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">DC Motors</a>
+              <a class="dropdown-item" href="#">Micro Servo Motors</a>
+              <a class="dropdown-item" href="#">Servo Motors</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item font-color-blue" href="#">View More...</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tools/ Toolkits
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Soldering Kits</a>
+              <a class="dropdown-item" href="#">Wire Strippers</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item font-color-blue" href="#">View More...</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Other Components
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Connecting Wires</a>
+              <a class="dropdown-item" href="#">Switches</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item font-color-blue" href="#">View More...</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="carousel-wrapper">
+    <h4 class="padding-top-10 padding-left-15">Top Deals</h4>
+    <div class="carousel" data-flickity='{ "initialIndex": 2 }'>
+      {% if user.is_authenticated %}
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Arduino UNO R3' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Micro Servo SG90' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Raspberry Pi 3' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Arduino Lilypad' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'IR Sensor' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/arduino-uno-r3-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Arduino UNO R3</h5></a>
+            <p>&#8377;400/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/servo-sg90-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Micro Servo SG90</h5></a>
+            <p>&#8377;147/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/raspberry-pi-3-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Raspberry Pi 3</h5></a>
+            <p>&#8377;2499/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/arduino-lilypad-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Arduino Lilypad</h5></a>
+            <p>&#8377;270/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/ir-sensor-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">IR Sensor</h5></a>
+            <p>&#8377;49/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="carousel-wrapper">
+    <h4 class="padding-top-10 padding-left-15">Best Sellers</h4>
+    <div class="carousel" data-flickity='{ "initialIndex": 2 }'>
+      {% if user.is_authenticated %}
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Arduino UNO R3' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Raspberry Pi 3' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Servo MG995' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Ultrasonic Sensor' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          {% for product in products %}
+            {% if product.product_name == 'Chassis Kit' %}
+              <a href="#"><img class="card-img-top" src="{{ product.product_img.url }}" alt="Card image cap"></a>
+              <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ product.product_name }}</h5></a>
+                {% if product.stock <= 3 %}
+                  <p>&#8377;{{ product.price }}/- only &nbsp;<span class="badge badge-warning">Hurry, only {{ product.stock }} left!!</span></p>
+                {% else %}
+                  <p>&#8377;{{ product.price }}/- only</p>
+                {% endif %}
+                <form method="GET">
+                  <button type="submit" name="add" class="btn btn-primary" value="{{ product }}">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/arduino-uno-r3-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Arduino UNO R3</h5></a>
+            <p>&#8377;400/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/raspberry-pi-3-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Raspberry Pi 3</h5></a>
+            <p>&#8377;2499/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/servo-mg995-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Servo MG995</h5></a>
+            <p>&#8377;325/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/ultrasonic-sensor-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Ultrasonic Sensor</h5></a>
+            <p>&#8377;90/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card carousel-cell" style="width: 18rem;">
+          <a href="#"><img class="card-img-top" src="{% static 'store/images/chassis-kit-1.jpg' %}" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Chassis Kit</h5></a>
+            <p>&#8377;990/- only</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Add to Cart</button>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <footer>
+    <a class="btn btn-light back-to-top-button" href="#TES" data-toggle="tooltip">BACK TO TOP <i class="fas fa-arrow-up"></i></a>
+    <div class="padding-top-10"></div>
+    <a href="{% url 'store-about' %}" class="hyperlink a-page">About Us</a> <br>
+    <a href="{% url 'store-contact' %}" class="hyperlink a-page">Contact Us</a> <br>
+    <div class="container-fluid padding-top-10">
+      <p class="centered"><i class="far fa-copyright"></i> Developed by <a href="https://github.com/jobjacob98" target="_blank" class="a-page">Job Jacob</a>, <a href="https://github.com/Leomv55" target="_blank" class="a-page">Leo Varghese</a> and <a href="https://github.com/zeeshanmmlp2" target="_blank" class="a-page">Mohammed Zeeshan</a></p>
+    </div>
+  </footer>
+  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">You are not Logged In!!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <a href="{% url 'login' %}">Log In</a> or <a href="{% url 'signup' %}">Sign Up</a> now to start shopping...
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

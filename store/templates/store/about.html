@@ -1,0 +1,36 @@
+{% extends "store/base.html" %}
+{% block content %}
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="col-md-3">
+        <a class="navbar-brand brand-font" href="{% url 'store-home' %}">The Embedded Store</a>
+      </div>
+    </nav>
+  </div>
+  <div class="about-style">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-1 col-xl-2"></div>
+        <div class="col-lg-10 col-xl-8 centered">
+          <h3>About</h3>
+          <p>
+            The Embedded Store is a Full Stack Web Development project undertaken by Job Jacob, Leo Varghese and Mohammed Zeeshan,
+            all BTech undergraduate students at Federal Institute of Science and Technology (FISAT). The aim of this project is to develop a
+            fully functional E-commerce website for buying project related hardware components by anyone around the world.
+            <br><br>
+            For more information on this project, please be free to <a href="{% url 'store-contact' %}">contact us</a>.
+          </p>
+        </div>
+        <div class="col-lg-1 col-xl-2"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer fixed-bottom">
+      <div class="padding-top-10"></div>
+      <a href="#" class="hyperlink a-page">About Us</a> <br>
+      <a href="{% url 'store-contact' %}" class="hyperlink a-page">Contact Us</a> <br>
+      <p class="centered"><i class="far fa-copyright"></i> Developed by <a href="https://github.com/jobjacob98" target="_blank" class="a-page">Job Jacob</a>, <a href="https://github.com/Leomv55" target="_blank" class="a-page">Leo Varghese</a> and <a href="https://github.com/zeeshanmmlp2" target="_blank" class="a-page">Mohammed Zeeshan</a></p>
+    </div>
+  </footer>
+{% endblock content %}

@@ -1,0 +1,367 @@
+.brand-font {
+    font-family: 'Vollkorn', serif;
+    font-size: 25px;
+}
+.padding-fixed-top {
+  padding-top: 63px;
+}
+.padding-top-5 {
+  padding-top: 5px;
+}
+.padding-top-10 {
+  padding-top: 10px;
+}
+.padding-top-30 {
+  padding-top: 30px;
+}
+.margin-left-18 {
+  margin-left: 18px !important;
+}
+.padding-left-9 {
+  padding-left: 9px !important;
+}
+.padding-left-10 {
+  padding-left: 10px;
+}
+.padding-left-15 {
+  padding-left: 15px;
+}
+.login-menu {
+  clear: both;
+  width: 320px;
+  min-height: 380px;
+}
+.dropdown-item:hover {
+  color: #007bff;
+}
+.dropdown-item:active {
+  background-color: transparent;
+}
+.divider {
+  border: 1px solid rgba(0, 0, 0, .0625);
+}
+.color-white {
+  color: #ffffff;
+}
+html, body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 524px;
+  top: 262px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+.carousel-wrapper .carousel {
+  position: absolute;
+  top: 53%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: auto;
+}
+.carousel-wrapper .carousel .carousel-cell {
+  padding: 10px;
+  background-color: #ffffff;
+  width: 20%;
+  height: auto;
+  min-width: 120px;
+  margin: 0 20px;
+  transition: transform 500ms ease;
+}
+.carousel-wrapper .carousel .carousel-cell:hover {
+  transform: scale(1.05);
+}
+.carousel-wrapper .flickity-page-dots {
+  display: none;
+}
+.carousel-wrapper .flickity-viewport, .carousel-wrapper .flickity-slider {
+  overflow: visible;
+}
+.back-to-top-button {
+  height: 50px;
+  width: 100%;
+  background-color: #343a40;
+  border-color: #343a40;
+  border-radius: 0px;
+  color: #ffffff;
+  text-align: center;
+}
+.back-to-top-button:hover {
+  background-color: #1d2124;
+  border-color: #1d2124;
+  border-radius: 0px;
+  color: #ffffff;
+  text-align: center;
+}
+.hyperlink {
+  padding-left: 20px;
+}
+.hyperlink:hover {
+  text-decoration: none;
+}
+.centered {
+  text-align: center;
+}
+.a-page {
+  color: #007bff;
+}
+.a-page:hover {
+  color: #007bff;
+  text-decoration-color: #f8f9fa;
+}
+.reset-style {
+  padding-top: 10%;
+  height: 78%;
+}
+.align-center {
+  margin: 0 auto !important;
+}
+.reset-btn {
+  margin-top: 12px !important;
+}
+.social-media-list {
+  padding: 0 0 0 0;
+}
+.social-media-list li {
+  display: inline;
+}
+.social-media-list-item {
+  margin-bottom: 14px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.btn-facebook {
+  color: #ffffff;
+  width: 150px;
+  background-color: #3b5999;
+}
+.facebook-hover, .btn-facebook:hover .facebook-not-hover {
+  display: none;
+}
+.btn-facebook:hover .facebook-hover {
+  display: inline;
+}
+.btn-twitter {
+  color: #ffffff;
+  width: 150px;
+  background-color: #55acee;
+}
+.twitter-hover, .btn-twitter:hover .twitter-not-hover {
+  display: none;
+}
+.btn-twitter:hover .twitter-hover {
+  display: inline;
+}
+.btn-youtube {
+  color: #ffffff;
+  width: 150px;
+  background-color: #cd201f;
+}
+.youtube-hover, .btn-youtube:hover .youtube-not-hover {
+  display: none;
+}
+.btn-youtube:hover .youtube-hover {
+  display: inline;
+}
+.btn-instagram {
+  color: #ffffff;
+  width: 150px;
+  background-color: #e4405f;
+}
+.instagram-hover, .btn-instagram:hover .instagram-not-hover {
+  display: none;
+}
+.btn-instagram:hover .instagram-hover {
+  display: inline;
+}
+.signup-btn {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.table > tbody > tr > td, .table > tfoot > tr > td {
+  vertical-align: middle;
+}
+@media (min-width: 576px) {
+  .btn-padding {
+    padding-top: 8px;
+  }
+  .email-input {
+    width: 300px !important;
+  }
+  .reset-btn {
+    margin-top: 5px !important;
+    width: 300px;
+  }
+  .visible-xs {
+    display: none;
+  }
+}
+@media (max-width: 575.98px) {
+  .brand-font {
+      font-family: 'Vollkorn', serif;
+      font-size: 22px;
+  }
+  .padding-fixed-top {
+    padding-top: 167px;
+  }
+  .sm-width-100 {
+    width: 100%;
+  }
+  .reset-style {
+    padding-top: 25%;
+    height: 78%;
+  }
+  .signup-style {
+    padding-top: 22%;
+    height: 260%;
+  }
+  .login-style {
+    padding-top: 22%;
+    height: 120%;
+  }
+  .logout-style {
+    padding-top: 22%;
+    height: 83%;
+  }
+  .about-style {
+    margin-top: 80px;
+  }
+  .contact-style {
+    margin-top: 70px;
+  }
+  .account-style {
+    margin-top: 75px;
+    height: 400%;
+  }
+  .cart-style {
+    padding-top: 20%;
+    height: 550%;
+  }
+  .hidden-xs {
+    display: none !important;
+  }
+  table#cart tbody td .form-control {
+    width: 20%;
+    display: inline !important;
+  }
+  .actions .btn {
+    width: 36%;
+    margin: 1.5em 0;
+  }
+  .actions .btn-info {
+    float:left;
+  }
+  .actions .btn-danger{
+    float:right;
+  }
+  table#cart thead {
+    display: none;
+  }
+  table#cart tbody td {
+    display: block;
+    padding: .6rem;
+    min-width: 320px;
+  }
+  table#cart tbody tr td:first-child {
+    background: #333;
+    color: #fff;
+  }
+  table#cart tbody td:before {
+    content: attr(data-th);
+    font-weight: bold;
+    display: inline-block;
+    width: 8rem;
+  }
+  table#cart tfoot td {
+    display: block;
+  }
+  table#cart tfoot td .btn {
+    display: block;
+  }
+}
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .padding-fixed-top {
+    padding-top: 117px;
+  }
+  .signup-style {
+    padding-top: 15%;
+    height: 260%;
+  }
+  .login-style {
+    padding-top: 15%;
+    height: 120%;
+  }
+  .logout-style {
+    padding-top: 15%;
+    height: 86%;
+  }
+  .about-style {
+    margin-top: 80px;
+  }
+  .contact-style {
+    margin-top: 75px;
+  }
+  .account-style {
+    margin-top: 80px;
+    height: 400%;
+  }
+  .cart-style {
+    padding-top: 15%;
+    height: 300%;
+  }
+}
+@media (min-width: 992px) {
+  .cart-btn-top {
+    display: none !important;
+  }
+  .nav-pos {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    z-index:1030;
+  }
+  .signup-style {
+    padding-top: 3%;
+    height: 100%;
+  }
+  .login-style {
+    padding-top: 3%;
+    height: 100%;
+  }
+  .logout-style {
+    padding-top: 3%;
+    height: 78%;
+  }
+  .about-style {
+    margin-top: 40px;
+  }
+  .contact-style {
+    margin-top: 20px;
+  }
+  .account-style {
+    margin-top: 20px;
+    height: 120%;
+  }
+  .cart-style {
+    padding-top: 3%;
+    height: 200%;
+  }
+  .text-style {
+    text-align: center;
+  }
+}
+@media (max-width: 991.98px) {
+  .cart-btn-bottom {
+    display: none !important;
+  }
+  .padding-fixed-top {
+    padding-top: 0px;
+  }
+}
