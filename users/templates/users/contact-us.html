@@ -1,0 +1,109 @@
+{% extends "store/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <script type="text/javascript">
+        var message = "{{ message }}";
+        console.log(message);
+        if(message=="Couldn't sent message. Invalid header found.") {
+          $(window).on('load', function() {
+            $('#failModal').modal('show');
+          });
+        }
+      </script>
+      <div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{ message }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Please try again...
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="col-md-3">
+        <a class="navbar-brand brand-font" href="{% url 'store-home' %}">The Embedded Store</a>
+      </div>
+    </nav>
+  </div>
+  <div class="contact-style">
+    <div class="container-fluid">
+      <h2 class="text-center">Contact Us</h2>
+      <p class="contact-subj-line text-center">We have a 24x7 Customer Care! Send your valuable complaints and queries. We will reply you soon!</p>
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6">
+          <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="text-center">
+              {% if user.is_authenticated %}
+                <button type="submit" class="btn btn-primary">Send Message &nbsp;<i class="fa fa-paper-plane"></i></button>
+              {% else %}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Send Message &nbsp;<i class="fa fa-paper-plane"></i></button>
+              {% endif %}
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4 contact-margin-right contact-margin-left contact-margin-top">
+          <hr class="divider">
+          <p><strong>Address:</strong><br>Federal Institute of Science And Technology (FISAT),<br>
+          Angamaly, Kerala,<br> India, Pin-683577
+          <br><br><strong>Phone: </strong>+91 9567381690
+          <br><br><strong>Email: </strong>TheEmbeddedStore@gmail.com</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6 contact-margin-left">
+          <hr>
+          <h3>Our Social Channels</h3><div class="display-height"></div>
+          <p class="contact-subj-line text-center">Join our social channels and be updated on our latest products and offers!!</p>
+          <ul class="social-media-list text-center">
+            <li><button class="btn btn-facebook btn-lg social-media-list-item left-align"><i class="fa fa-facebook"></i><span class="facebook-not-hover">&nbsp;&nbsp;&nbsp;Facebook</span>
+                <span class="facebook-hover">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like</span></button></li>
+            <li><button class="btn btn-twitter btn-lg social-media-list-item left-align"><i class="fa fa-twitter"></i><span class="twitter-not-hover">&nbsp;&nbsp;&nbsp;&nbsp;Twitter</span>
+                <span class="twitter-hover">&nbsp;&nbsp;&nbsp;Follow</span></button></li>
+            <li><button class="btn btn-youtube btn-lg social-media-list-item left-align"><i class="fa fa-youtube-play"></i><span class="youtube-not-hover">&nbsp;&nbsp;&nbsp;YouTube</span>
+                <span class="youtube-hover">&nbsp;&nbsp;Subcribe</span></button></li>
+            <li><button class="btn btn-instagram btn-lg social-media-list-item left-align"><i class="fa fa-instagram"></i><span class="instagram-not-hover">&nbsp;&nbsp;Instagram</span>
+                <span class="instagram-hover">&nbsp;&nbsp;&nbsp;Follow</span></button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer">
+      <div class="padding-top-10"></div>
+      <a href="{% url 'store-about' %}" class="hyperlink a-page">About Us</a> <br>
+      <a href="#" class="hyperlink a-page">Contact Us</a> <br>
+      <p class="centered"><i class="far fa-copyright"></i> Developed by <a href="https://github.com/jobjacob98" target="_blank" class="a-page">Job Jacob</a>, <a href="https://github.com/Leomv55" target="_blank" class="a-page">Leo Varghese</a> and <a href="https://github.com/zeeshanmmlp2" target="_blank" class="a-page">Mohammed Zeeshan</a></p>
+    </div>
+  </footer>
+  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">You are not Logged In!!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <a href="{% url 'login' %}">Log In</a> or <a href="{% url 'signup' %}">Sign Up</a> to send us a message...
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

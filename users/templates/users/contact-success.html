@@ -1,0 +1,23 @@
+{% extends "store/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="col-md-3">
+        <a class="navbar-brand brand-font" href="{% url 'store-home' %}">The Embedded Store</a>
+      </div>
+    </nav>
+  </div>
+  <div class="container-fluid logout-style col-md-7 col-lg-6 col-xl-5">
+    <h4>We have received your message and will reply you shortly.</h4></br>
+    <h5>Continue <a href="{% url 'store-home' %}">Shopping</a>...</h5>
+  </div>
+  <footer>
+    <div class="padding-top-10"></div>
+    <a href="{% url 'store-about' %}" class="hyperlink a-page">About Us</a> <br>
+    <a href="{% url 'store-contact' %}" class="hyperlink a-page">Contact Us</a> <br>
+    <div class="container-fluid padding-top-10">
+      <p class="centered"><i class="far fa-copyright"></i> Developed by <a href="https://github.com/jobjacob98" target="_blank" class="a-page">Job Jacob</a>, <a href="https://github.com/Leomv55" target="_blank" class="a-page">Leo Varghese</a> and <a href="https://github.com/zeeshanmmlp2" target="_blank" class="a-page">Mohammed Zeeshan</a></p>
+    </div>
+  </footer>
+{% endblock content %}

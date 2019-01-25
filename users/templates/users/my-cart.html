@@ -1,0 +1,291 @@
+{% extends "store/base.html" %}
+{% load crispy_forms_tags %}
+{% load multiply %}
+{% block content %}
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="col-md-3">
+        <a class="navbar-brand brand-font" href="{% url 'store-home' %}">The Embedded Store</a>
+      </div>
+    </nav>
+  </div>
+  {% if cart_count == 0 %}
+    <div class="container-fluid logout-style col-md-7 col-lg-6 col-xl-5">
+      <h3>Your Cart is empty!!</h3></br>
+      <h5>&nbsp;Start&nbsp;<a href="{% url 'store-home' %}">Shopping</a> now.</h5>
+    </div>
+  {% else %}
+    <div class="container-fluid cart-style col-lg-11">
+      <table id="cart" class="table table-hover table-condensed">
+    	   <thead>
+           <tr>
+             <th style="width:50%">Product</th>
+             <th style="width:10%">Price</th>
+             <th style="width:8%">Quantity</th>
+             <th style="width:22%" class="text-center">Subtotal</th>
+      			<th style="width:10%"></th>
+          </tr>
+        </thead>
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'Arduino UNO R3' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'Micro Servo SG90' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'Raspberry Pi 3' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'Arduino Lilypad' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'IR Sensor' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'Servo MG995' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'Ultrasonic Sensor' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% for cart_product in cart_products %}
+          {% for product in products %}
+            {% if cart_product.product_id == product.product_name and cart_product.product_id == 'Chassis Kit' %}
+              {% if cart_product.pcount >= 0 %}
+                <tbody>
+                  <tr>
+                    <td data-th="Product">
+                      <div class="row">
+                        <div class="col-lg-2 hidden-xs"><img src="{{ product.product_img.url }}" class="img-responsive" width="100px" height="100px"/></div>
+                        <div class="col-lg-10 text-style">
+                          <h4 class="nomargin">{{ product.product_name }}</h4>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-th="Price">&#8377;{{ product.price }}/-</td>
+                    <td data-th="Quantity">
+                      <input type="number" class="form-control text-center" value="{{ cart_product.pcount }}">
+                    </td>
+                    <td data-th="Subtotal" class="text-center">&#8377;{% multiply cart_product.pcount product.price %}/-</td>
+                    <td class="actions" data-th="" style="padding-left: 25px;">
+                      <form method="GET">
+                        <button type="submit" class="btn btn-danger btn-sm" name="add" value="{{ product }}"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        <tfoot>
+          <tr class="visible-xs">
+            <td class="text-center"><strong>Total &#8377;{{ cart_price }}/-</strong></td>
+          </tr>
+          <tr>
+            <td><a href="{% url 'store-home' %}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+            <td colspan="2" class="hidden-xs"></td>
+            <td class="hidden-xs text-center"><strong>Total &#8377;{{ cart_price }}/-</strong></td>
+            <td><a href="#" class="btn btn-warning btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  {% endif %}
+  <footer>
+    <div class="padding-top-10"></div>
+    <a href="{% url 'store-about' %}" class="hyperlink a-page">About Us</a> <br>
+    <a href="{% url 'store-contact' %}" class="hyperlink a-page">Contact Us</a> <br>
+    <div class="container-fluid padding-top-10">
+      <p class="centered"><i class="far fa-copyright"></i> Developed by <a href="https://github.com/jobjacob98" target="_blank" class="a-page">Job Jacob</a>, <a href="https://github.com/Leomv55" target="_blank" class="a-page">Leo Varghese</a> and <a href="https://github.com/zeeshanmmlp2" target="_blank" class="a-page">Mohammed Zeeshan</a></p>
+    </div>
+  </footer>
+{% endblock content %}
