@@ -12,5 +12,5 @@ How to use: <br/>
 5) Run the manage.py file. <br/>
 4) Go to 127.0.0.1 in any web browser. You are done! <br/>
 
-### Feel free contact me for any help/doubts regarding this project!! ###
+### Feel free to contact me for any help/doubts regarding this project!! ###
 
