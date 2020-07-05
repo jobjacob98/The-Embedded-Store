@@ -1,8 +1,8 @@
 # The Embedded Store #
 
-This project is actually a miniature version of an e-commerce website for selling robotics components. It was started by me out of self-interest but went on to complete it as my database project included in our curriculum. Features of the site include login/logout, forgot password option with password reset email feature, account information updation, customer feedback via email and cart features including adding/removing items from cart, knowing the total cost of items in cart etc. <br/>
+This project is a miniature version of an e-commerce website for selling robotics components. Features of the site include login/logout, forgot password option with a password reset email feature, account information updations, customer feedback via email, and cart features including adding/removing items from the cart, knowing the total cost of items in cart, etc. <br/>
 
-HTML5/CSS3, Bootstrap and JavaScript were used to develop the front end and Django was used for the back end with SQLite as the database. <br/>
+HTML5, CSS3, Bootstrap, and JavaScript were used to develop the front end and Django was used for the back end with SQLite as the database.<br/>
 
 How to use: <br/>
 1) Download this repo. <br/>
